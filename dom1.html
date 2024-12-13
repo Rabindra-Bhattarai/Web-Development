@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+</head>
+<body>
+    <section>
+        <form>
+            <label for="name">Username:</label><br>
+            <input 
+                type="text" 
+                id="name" 
+                onchange="changeName(event)"
+                onmouseover="hideInput(event)"
+                placeholder="Please Enter Your Name" 
+                required>
+        </form>
+    </section>
+
+    <script>
+        const abc= document.getElementById("name");
+
+        function changeName(ev) {
+            console.log(ev.target.value);
+        }
+
+        function hideInput(ev){
+            ev.target.style.display='none';
+        }
+    </script>
+</body>
+</html>
