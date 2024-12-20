@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Propagation</title>
+</head>
+<body>
+    <p>Propagation Part</p>
+    <div id="parent">
+        Parent Div
+        <button id="child">Child</button>
+    </div>
+    <script>
+        const parent = document.getElementById("parent");
+        const child = document.getElementById("child");
+
+        parent.addEventListener("click", (e) => {
+            console.log("Parent clicked");
+        });
+
+        child.addEventListener("click", (e) => {
+            console.log("Child clicked");
+        });
+
+        parent.addEventListener(
+            "click",
+            (e) => {
+                console.log("Parent capturing phase");
+            },
+            true
+        );
+    </script>
+</body>
+</html>

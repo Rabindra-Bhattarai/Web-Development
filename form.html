@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+    <style>
+        .error { color: red; font-size: small; }
+        table { margin-top: 20px; width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h1>Add Product</h1>
+    <form id="form">
+
+        <label>Name: <input id="name" required></label><br>
+        <label>Code: <input id="code" required></label><br>
+        <label>Quality: 
+            <select id="quality" required>
+                <option value="">Choose</option>
+                <option>High</option>
+                <option>Medium</option>
+                <option>Low</option>
+            </select>
+        </label><br>
+        <label>Type: 
+            <select id="type" required>
+                <option value="">Choose</option>
+                <option>Electronics</option>
+                <option>Furniture</option>
+                <option>Clothing</option>
+                <option>Other</option>
+            </select>
+        </label><br>
+        <label>Sale: 
+            <select id="sale" required>
+                <option value="">Choose</option>
+                <option>True</option>
+                <option>False</option>
+            </select>
+        </label><br>
+        <label>Date: <input type="date" id="date" required></label><br>
+        <button type="button" onclick="addProduct()">Add</button>
+    </form>
+
+    <table id="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Quality</th>
+                <th>Type</th>
+                <th>Sale</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        let count = 1;
+
+        function addProduct() {
+            const name = document.getElementById("name").value.trim();
+            const code = document.getElementById("code").value.trim();
+            const quality = document.getElementById("quality").value;
+            const type = document.getElementById("type").value;
+            const sale = document.getElementById("sale").value;
+            const date = document.getElementById("date").value;
+
+            if (!name || !code || !quality || !type || !sale || !date) {
+                alert("All fields are required.");
+                return;
+            }
+
+            const row = `<tr>
+                <td>${count++}</td>
+                <td>${name}</td>
+                <td>${code}</td>
+                <td>${quality}</td>
+                <td>${type}</td>
+                <td>${sale}</td>
+                <td>${date}</td>
+            </tr>`;
+
+            document.querySelector("#product-table tbody").insertAdjacentHTML("beforeend", row);
+            document.getElementById("product-form").reset();
+            alert("Product added!");
+        }
+    </script>
+</body>
+</html>
